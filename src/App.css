@@ -90,3 +90,19 @@ button:focus-visible, a:focus-visible { outline: 3px solid rgba(23,105,255,.35);
 
 .contact-card,
 .contact-card:hover { border-bottom: 0; }
+
+@media (max-width: 767px) {
+  .projects-grid { width: 100%; min-width: 0; }
+  .project-card-link,
+  .project-card,
+  .project-art,
+  .project-card-body { min-width: 0; max-width: 100%; }
+  .project-card { width: 100%; grid-template-columns: 38% minmax(0, 62%); }
+  .project-art { width: 100%; min-height: 0; aspect-ratio: auto; }
+  .project-card-body { overflow: hidden; }
+  .project-meta,
+  .project-card h3,
+  .project-card p,
+  .tag-list,
+  .card-link { max-width: 100%; overflow-wrap: anywhere; }
+}
