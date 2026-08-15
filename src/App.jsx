@@ -214,7 +214,7 @@ function ProjectDetail({ project }) {
       <main className="detail-page">
         <section className="detail-content section-shell">
           <div className={`detail-placeholder ${project.slug}`} aria-label={`${project.title}のプロジェクト画像`}>
-            <img src={project.image} alt={`${project.title}のプロジェクト画像`} />
+            {project.image ? <img src={project.image} alt={`${project.title}のプロジェクト画像`} /> : <div className="project-placeholder detail-image-placeholder"><span>{project.title}</span><small>IMAGE COMING SOON</small></div>}
           </div>
           <div className="detail-hero">
             <p className="detail-kicker">{project.number} / PROJECT</p>
