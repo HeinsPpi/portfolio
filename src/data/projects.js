@@ -52,4 +52,16 @@ const projectList = [
   { slug: 'kaggle-pokemon-tcg-ai', number: 'Project 07', category: 'AI / DATA', title: 'Kaggle Pokémon TCG AI Battle', description: 'ポケモンカードゲームを題材に、対戦状況から適切な行動を選択するAIエージェントを開発した。', detail: ['ポケモンカードゲームを題材に、ゲームの状況から適切な行動を選択するAIを開発するKaggleのコンペティションに参加した。対戦中の手札や盤面、相手の状態、残り山札など複数の情報をもとに行動を決定するエージェントを実装し、シミュレーションによる評価と負けログの分析を繰り返しながら戦略を改善した。特に、ある対面だけに勝つためのルールを追加するのではなく、複数の相手との大量の対戦結果から敗因を特定し、修正前後の勝率を比較しながら全体として強くなる判断ルールを探った。実装、評価、分析、修正を何度も繰り返したことで、AIの性能を高めるにはアルゴリズムを作るだけでなく、結果を検証し、失敗の原因を次の改善につなげることが重要だと学んだ。'], tags: ['AI', 'Kaggle', 'Agent'], period: '2026' },
 ]
 
-export const projects = projectList.map((project) => ({ ...project, ...projectHighlights[project.slug] }))
+const getPeriodYears = (period) => period.match(/\d{4}/g).map(Number)
+
+export const projects = [...projectList]
+  .sort((left, right) => {
+    const leftYears = getPeriodYears(left.period)
+    const rightYears = getPeriodYears(right.period)
+    return (rightYears.at(-1) - leftYears.at(-1)) || (rightYears[0] - leftYears[0])
+  })
+  .map((project, index) => ({
+    ...project,
+    number: `Project ${String(index + 1).padStart(2, '0')}`,
+    ...projectHighlights[project.slug],
+  }))
