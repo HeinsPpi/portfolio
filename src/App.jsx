@@ -160,7 +160,7 @@ function HeroArtwork() {
 }
 
 function Hero() {
-  return <section id="home" className="hero section-shell"><div className="hero-copy"><p className="eyebrow">AI / SOFTWARE / RESEARCH</p><div className="portfolio-lockup"><h1>PORT<br />FOLIO</h1></div><p className="hero-name">Miyamoto Michiru</p><p className="hero-tagline">仮説を、動くシステムに変える。</p></div><HeroArtwork /><div className="hero-lower-decor" aria-hidden="true">{Array.from({ length: 9 }, (_, index) => <i className={`decor-triangle triangle-${index + 1}`} key={index} />)}</div></section>
+  return <section id="home" className="hero section-shell"><div className="hero-copy"><p className="eyebrow">AI / SOFTWARE / RESEARCH</p><div className="portfolio-lockup"><h1>PORT<br />FOLIO</h1></div><p className="hero-name">Miyamoto Michiru</p><p className="hero-tagline">現象をデータで捉え、不完全な情報からよりよい意思決定を探る。</p></div><HeroArtwork /><div className="hero-lower-decor" aria-hidden="true">{Array.from({ length: 9 }, (_, index) => <i className={`decor-triangle triangle-${index + 1}`} key={index} />)}</div></section>
 }
 
 function SectionHeader({ icon: Icon, children, link }) {
@@ -172,7 +172,7 @@ function ProfilePlaceholder() {
 }
 
 function About() {
-  return <section id="about" className="section-shell bordered-section about-section"><SectionHeader icon={CircleUserRound}>About Me</SectionHeader><div className="about-layout"><div className="about-copy"><p className="about-name">宮本 満</p><p className="about-summary">{profile.summary}</p><div className="about-text">{profile.about.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div></div><ProfilePlaceholder /></div></section>
+  return <section id="about" className="section-shell bordered-section about-section"><SectionHeader icon={CircleUserRound}>About Me</SectionHeader><div className="about-layout"><div className="about-copy"><p className="about-name">宮本 満</p><div className="about-text">{profile.about.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div></div><ProfilePlaceholder /></div></section>
 }
 
 function ProjectCard({ project }) { return <Link className="project-card-link" to={`/projects/${project.slug}`} aria-label={`${project.title}の詳細を見る`}><article className="project-card"><div className={`project-art${project.imageZoom ? ' is-zoomed' : ''} ${project.slug}`}>{project.image ? <img src={project.image} alt={`${project.title}のプロジェクト画像`} /> : <div className="project-placeholder" aria-label={`${project.title}の画像プレースホルダー`}><span>{project.title}</span></div>}</div><div className="project-card-body"><div className="project-meta"><span className="project-number">{project.number}</span><time>{project.period}</time></div><h3>{project.title}</h3><p>{project.description}</p><div className="tag-list">{project.tags.map((tag) => <span key={tag}>{tag}</span>)}</div><span className="card-link">詳細を見る <ArrowRight size={15} /></span></div></article></Link> }
